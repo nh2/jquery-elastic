@@ -1,7 +1,7 @@
 /**
 *	@name							Elastic
 *	@descripton						Elastic is Jquery plugin that grow and shrink your textareas automaticliy
-*	@version						1.6.3
+*	@version						1.6.5
 *	@requires						Jquery 1.2.6+
 *
 *	@author							Jan Jarfalk
@@ -103,7 +103,9 @@
 				$textarea.css({'overflow':'hidden'});
 				
 				// Update textarea size on keyup
-				$textarea.keyup(function(){ update(); });
+				$textarea.bind('keyup change cut paste', function(){
+					update(); 
+				});
 				
 				// Compact textarea on blur
 				// Lets animate this....
