@@ -102,7 +102,7 @@
 				// Hide scrollbars
 				$textarea.css({'overflow':'hidden'});
 				
-				// Update textarea size on keyup
+				// Update textarea size on keyup, change, cut and paste
 				$textarea.bind('keyup change cut paste', function(){
 					update(); 
 				});
