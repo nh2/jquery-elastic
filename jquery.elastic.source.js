@@ -71,7 +71,7 @@
 				
 				
 				// This function will update the height of the textarea if necessary 
-				function update() {
+				$textarea.bind('elastic_update', function() {
 					
 					// Get curated content from the textarea.
 					var textareaContent = $textarea.val().replace(/&/g,'&amp;').replace(/  /g, '&nbsp;').replace(/<|>/g, '&gt;').replace(/\n/g, '<br />');
@@ -100,14 +100,14 @@
 						
 					}
 					
-				}
+				});
 				
 				// Hide scrollbars
 				$textarea.css({'overflow':'hidden'});
 				
 				// Update textarea size on keyup, change, cut and paste
 				$textarea.bind('keyup keydown change cut paste', function(){
-					setTimeout(update, 1);
+					setTimeout(function(){ $textarea.trigger('elastic_update') }, 1);
 				});
 				
 				// Compact textarea on blur
@@ -126,7 +126,7 @@
 				//$textarea.live('input paste',function(e){ setTimeout( update, 250); });				
 				
 				// Run update once when elastic is initialized
-				update();
+				$textarea.trigger('elastic_update');
 				
 			});
 			
