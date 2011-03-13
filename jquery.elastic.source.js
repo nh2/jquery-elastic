@@ -106,8 +106,8 @@
 				$textarea.css({'overflow':'hidden'});
 				
 				// Update textarea size on keyup, change, cut and paste
-				$textarea.bind('keyup change cut paste', function(){
-					update(); 
+				$textarea.bind('keyup keydown change cut paste', function(){
+					setTimeout(update, 1);
 				});
 				
 				// Compact textarea on blur
@@ -123,7 +123,7 @@
 				});
 				
 				// And this line is to catch the browser paste event
-				$textarea.live('input paste',function(e){ setTimeout( update, 250); });				
+				//$textarea.live('input paste',function(e){ setTimeout( update, 250); });				
 				
 				// Run update once when elastic is initialized
 				update();
